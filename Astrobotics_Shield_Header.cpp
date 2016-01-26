@@ -1,23 +1,49 @@
-//Virginia Tech Astrobotics 2015 Galileo Shield Cpp File
-//Written by Michael Lai
-//Do not steal
+// Virginia Tech Astrobotics 2015 Galileo Shield Cpp File
+// Written by Michael Lai
+// Do not steal
+
 #include "Astrobotics_Shield_Header.h"
 
-Astrobotics_Shield_Header::Astrobotics_Shield_Header()
+const int talon_max_forward = 450; // max forward talon pulse frequency for reference
+const int talon_max_reverse = 120; // max reverse talon pulse frequency for reference
+const int talon_neutral = 285;     // neutral talon pulse frequency for reference
+const float epsilon = 0.001;
+
+PWMTalon::TalonDriver = NULL;
+
+void PWMTalon::talon_init()
 {
-	talon_max_forward = 450; //max forward frequency for reference
-	talon_max_reverse = 120;//max reverse frequency for reference
-	talon_neutral = 285;//neutral frequency for reference
-	Adafruit_PWMServoDriver Talon = Adafruit_PWMServoDriver();
+    if(TalonDriver == NULL)
+    {
+        TalonDriver = new Adafruit_PWMServoDriver();
+        TalonDriver->begin();
+        TalonDriver->setPWMFreq(50);
+    }
 }
 
-void Astrobotics_Shield_Header::talon_init()
+void PWMTalon::set_talon_speed(int speed, int port)
 {
-	Talon.begin();
-	Talon.setPWMFreq(50);
+    TalonDriver->setPWM(port,0,speed);
 }
 
-void Astrobotics_Shield_Header::set_talon_speed(int speed,int port)
+PWMTalon::PWMTalon(int port) : port(port)
 {
-	Talon.setPWM(port,0,speed);
+}
+
+PWMTalon::~PWMTalon()
+{
+}
+
+void PWMTalon::set_speed(float value)
+{
+    // Convert [-1.0, 1.0] range to PWM frequency range
+    int speed;
+    if(value > -epsilon && value < epsilon) {
+        speed = talon_neutral;
+    }
+    else
+    {
+        speed = (int)(((val + 1.0f) / 2.0f * (talon_max_forward - talon_max_reverse)) + talon_max_reverse);
+    }
+    set_talon_speed(speed, port);
 }
