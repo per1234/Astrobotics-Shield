@@ -4,8 +4,8 @@
 
 #include "Astrobotics_Shield_Header.h"
 
-const int talon_max_forward = 450; // max forward talon pulse frequency for reference
-const int talon_max_reverse = 120; // max reverse talon pulse frequency for reference
+const int talon_max_forward = 455; // max forward talon pulse frequency for reference
+const int talon_max_reverse = 115; // max reverse talon pulse frequency for reference
 const int talon_neutral = 285;     // neutral talon pulse frequency for reference
 const float epsilon = 0.001;
 
