@@ -5,7 +5,7 @@
 #include "mcp_can.h"
 #include "SPI.h"
 #include "Adafruit_ADS1015.h"
-#include "wire.h"
+#include "Wire.h"
 #include "Adafruit_MCP23008.h"
 #include "LiquidCrystal.h"
 #include "Adafruit_PWMServoDriver.h"
