@@ -1,0 +1,12 @@
+name=Astrobotics Shield
+version=1.0.0
+author=VT Astrobotics
+maintainer=VT Astrobotics <vtastrobotics@gmail.com>
+email=vtastrobotics@gmail.com
+sentence=Library for Astrobotics custom Arduino shield
+paragraph=Library for Astrobotics custom Arduino shield
+category=Signal Input/Output
+url=https://github.com/VTAstrobotics/Astrobotics-Shield
+architectures=*
+dependencies=
+core-dependencies=arduino (>=1.5.0)
