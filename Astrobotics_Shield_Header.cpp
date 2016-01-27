@@ -9,7 +9,7 @@ const int talon_max_reverse = 120; // max reverse talon pulse frequency for refe
 const int talon_neutral = 285;     // neutral talon pulse frequency for reference
 const float epsilon = 0.001;
 
-PWMTalon::TalonDriver = NULL;
+Adafruit_PWMServoDriver* PWMTalon::TalonDriver = NULL;
 
 void PWMTalon::talon_init()
 {
@@ -23,7 +23,7 @@ void PWMTalon::talon_init()
 
 void PWMTalon::set_talon_speed(int speed, int port)
 {
-    TalonDriver->setPWM(port,0,speed);
+    TalonDriver->setPWM(port, 0, speed);
 }
 
 PWMTalon::PWMTalon(int port) : port(port)
@@ -43,7 +43,7 @@ void PWMTalon::set_speed(float value)
     }
     else
     {
-        speed = (int)(((val + 1.0f) / 2.0f * (talon_max_forward - talon_max_reverse)) + talon_max_reverse);
+        speed = (int)(((value + 1.0f) / 2.0f * (talon_max_forward - talon_max_reverse)) + talon_max_reverse);
     }
     set_talon_speed(speed, port);
 }
