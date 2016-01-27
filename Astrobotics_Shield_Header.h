@@ -11,19 +11,14 @@
 #include "LiquidCrystal.h"
 #include "Adafruit_PWMServoDriver.h"
 
-//Notes:
-//-To initialize PWM Talon control, you must initialize the talon_init class
-//in void setup
+// Notes:
+// - To initialize PWM Talon control, you must call PWMTalon::talon_init()
+//   during setup
 //
-//-Afterwards just use the set_talon_speed class to set the talon speeds. 
-//You don't have to initialize multiple classes of talon_init or set_talon_speed 
-//to control multiple talons. set_talon_speed takes speed and port number. Just specify
-//different port numbers to control difference talons.
+// - Afterwards just use the sest_speed method in the range [-1.0, 1.0] to set the talon speeds. 
+//   Specify port numbers to control different talons in the constructor
 //
-//-The talon classes accept pulsewidth values from 120 to 450. Full forward, full reverse, and neutral have been initialized
-//as private variables for reference. Check the default constructor to see which values correspond to which speeds.
-//
-//-An example Arduino file has been included for reference in the library.
+// - An example Arduino file has been included for reference in the library.
 
 class PWMTalon
 {
