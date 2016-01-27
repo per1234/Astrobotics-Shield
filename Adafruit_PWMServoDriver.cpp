@@ -17,7 +17,7 @@
 
 #include <Adafruit_PWMServoDriver.h>
 #include <Wire.h>
-#if defined(__AVR__)
+#if defined(__AVR__) || defined(__ARDUINO_X86__) // x86 to support Galileo
  #define WIRE Wire
 #elif defined(CORE_TEENSY) // Teensy boards
  #define WIRE Wire
