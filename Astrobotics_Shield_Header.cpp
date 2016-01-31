@@ -26,7 +26,7 @@ void PWMTalon::set_talon_speed(int speed, int port)
     TalonDriver->setPWM(port, 0, speed);
 }
 
-PWMTalon::PWMTalon() : port(-1)
+PWMTalon::PWMTalon() : port(-1), reversed(false)
 {
 }
 
@@ -34,9 +34,10 @@ PWMTalon::~PWMTalon()
 {
 }
 
-void PWMTalon::attach(int _port)
+void PWMTalon::attach(int _port, bool _reversed)
 {
     port = _port;
+    reversed = _reversed;
 }
 
 void PWMTalon::set_speed(float value)
@@ -46,6 +47,7 @@ void PWMTalon::set_speed(float value)
         return;
     }
 
+    value *= (reversed ? -1.0f : 1.0f);
     // Convert [-1.0, 1.0] range to PWM frequency range
     int speed;
     if(value > -epsilon && value < epsilon) {

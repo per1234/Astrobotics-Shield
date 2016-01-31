@@ -30,7 +30,7 @@ public:
 
     PWMTalon();
     ~PWMTalon();
-    void attach(int port);                            // Attach Talon to given port
+    void attach(int port, bool reversed = false);     // Attach Talon to given port, with speed optionally reversed
     void set_speed(float value);                      // Set speed in range [-1.0, 1.0]
 
 private:
@@ -38,6 +38,7 @@ private:
     static void set_talon_speed(int speed, int port); // Set Talon Speeds
 
     int port;
+    bool reversed;
 };
 
 #endif
