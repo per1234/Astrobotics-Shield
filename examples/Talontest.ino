@@ -1,9 +1,11 @@
 #include <Astrobotics_Shield_Header.h>
 
-PWMTalon talon(0);
+int TALON_PORT = 0;
+PWMTalon talon;
 
 void setup() 
 {
+  talon.attach(TALON_PORT);
   PWMTalon::talon_init(); // YOU MUST INITIALIZE THIS. THIS INITIALIZES THE INTERFACE
 }
 
