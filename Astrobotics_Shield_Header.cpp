@@ -38,6 +38,7 @@ void PWMTalon::attach(int _port, bool _reversed)
 {
     port = _port;
     reversed = _reversed;
+    set_speed(0.0f);
 }
 
 void PWMTalon::set_speed(float value)
