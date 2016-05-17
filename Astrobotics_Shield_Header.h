@@ -23,6 +23,8 @@
 //
 // - An example Arduino file has been included for reference in the library.
 
+void setupControlBoxMenu();
+
 class PWMTalon
 {
 public:
